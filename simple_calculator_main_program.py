@@ -3,7 +3,7 @@ from random import choice
 import time
 import sys
 
-from colorama import Fore, Style
+from colorama import Back, Fore, Style
 from calculator_functionalities import (
     CalculatorActions, DivisionByZeroError, InvalidInputError)
 
@@ -133,4 +133,17 @@ class SimpleCalculator:
                 break
         
         self.show_goodbye()
+
+    def show_goodbye(self):
+        self.clear_screen()
+        print(f"""
+{Fore.RED + Back.YELLOW}
+╔══════════════════════════════════════════════════════╗
+║                SALAMAT BROKEVCULATOR                 ║
+║                    KEVCULATOR                        ║
+╚══════════════════════════════════════════════════════╝
+{Style.RESET_ALL}
+        """)
+        time.sleep(2)
+        
         
