@@ -39,7 +39,7 @@ class SimpleCalculator:
                 f"{Fore.MAGENTA}Enter your choice: {Style.RESET_ALL}").strip().upper()
 
             if choice == 'Q':
-                return , None, None
+                return, None, None
             elif choice == 'H':
                 CalculatorActions.show_all_history()
                 input(
@@ -78,14 +78,30 @@ class SimpleCalculator:
             calculator.add_to_history(num_one, operation, num_two, result)
 
             print(f"\n{Fore.YELLOW{"="*60}}{Style.RESET_ALL}")
-            print(f"{FOre.CYAN}Calculation Result:{Style.RESET_ALL}")
+            print(f"{Fore.CYAN}Calculation Result:{Style.RESET_ALL}")
             print(
                 f"{Fore.WHITE}{num_one} {operation} {num_two} = {Fore.GREEN}{result}{Style.RESET_ALL}")
             print(f"{Fore.YELLOW{"="*60}}{Style.RESET_ALL}")
+
             return True
+
         except DivisionByZeroError as error:
             print(f"{Fore.RED}{error}{Style.RESET_ALL}")
             return False
         except Exception as error:
             print(f"{Fore.RED}An error occurred: {str(error)}{Style.RESET_ALL}")
             return False
+
+    def ask_to_continue(self) -> bool:
+        print(f"/n{Fore.GREEN}{"="*50}{Style.RESET_ALL}")
+
+        while True:
+            choice = input(
+                f"{Fore.CYAN}Do you want to perform another calculation? (Y/N): {Style.RESET_ALL}").strip().upper()
+            if choice in ['y', 'yes', '']:
+                return True
+            elif choice in ['n', 'no']:
+                return False
+            else:
+                print(
+                    f"{Fore.YELLOW}Invalid choice. Please enter Y or N.{Style.RESET_ALL}")
