@@ -20,7 +20,7 @@ class SimpleCalculator:
 ╔══════════════════════════════════════════════════════╗
 ║                      KEVCULATOR                      ║
 ║                   Maangas, Ugh Argh                  ║
-╚══════════════════════════════════════════════════════╝  
+╚══════════════════════════════════════════════════════╝
 {Style.RESET_ALL}"""
         print(banner)
 
@@ -39,7 +39,7 @@ class SimpleCalculator:
                 f"{Fore.MAGENTA}Enter your choice: {Style.RESET_ALL}").strip().upper()
 
             if choice == 'Q':
-                return, None, None
+                return , None, None
             elif choice == 'H':
                 CalculatorActions.show_all_history()
                 input(
@@ -105,3 +105,33 @@ class SimpleCalculator:
             else:
                 print(
                     f"{Fore.YELLOW}Invalid choice. Please enter Y or N.{Style.RESET_ALL}")
+
+    def run(self):
+        self.clear_screen()
+        self.display_banner()
+
+        print(
+            f"{Fore.GREEN}Welcome to Kevculator! Let's do some calculations!{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}Tip: You can view your calculation history anytime by selecting 'H' from the menu.{Style.RESET_ALL}")
+
+        while True:
+            operation, calculator = self.get_user_input()
+            if operation is None:
+                break
+
+            self.clear_screen()
+            self.display_banner()
+
+            num_one, num_two = self.get_numbers()
+
+           success = self.calculate(operation, calculator, num_one, num_two)
+
+            if success:
+                input(f"\n{Fore.YELLOW}Press Enter to continue... {Style.RESET_ALL}")
+
+            if not self.ask_to_continue():
+                print(f"{Fore.GREEN}Thank you for using Kevculator! Goodbye!{Style.RESET_ALL}")
+                break
+        
+        self.show_goodbye()
+        
