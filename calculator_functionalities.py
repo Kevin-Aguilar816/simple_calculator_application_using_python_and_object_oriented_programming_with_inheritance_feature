@@ -50,3 +50,8 @@ class BaseCalculator(ABC):
             print(f"{Fore.GREEN}{i}. {calc['timestamp']}{Style.RESET_ALL}")
             print(
                 f"{calc[num_one]} {calc['operation']} {calc['num_two']} = {calc['result']}")
+
+
+class AdditionCalculator(BaseCalculator):
+    def calculate(self, num_one: float, num_two: float) -> float:
+        return num_one + num_two
