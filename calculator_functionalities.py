@@ -60,3 +60,8 @@ class AdditionCalculator(BaseCalculator):
 class SubtractionCalculator(BaseCalculator):
     def calculate(self, num_one: float, num_two: float) -> float:
         return num_one - num_two
+
+
+class MultiplicationCalculator(BaseCalculator):
+    def calculate(self, num_one: float, num_two: float) -> float:
+        return num_one * num_two
