@@ -39,3 +39,14 @@ class BaseCalculator(ABC):
             "result": result,
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
         })
+
+    def show_history(self):
+        if not self.history:
+            print(f"{Fore.YELLOW}No calculations yet. {Style.RESET_ALL}")
+            return
+        print(
+            f"{Fore.CYAN}Calculation History ({len(self.history)} entries):{Style.RESET_ALL}")
+        for i, calc in enumerate(self.history[-5:], 1):
+            print(f"{Fore.GREEN}{i}. {calc['timestamp']}{Style.RESET_ALL}")
+            print(
+                f"{calc[num_one]} {calc['operation']} {calc['num_two']} = {calc['result']}")
