@@ -55,3 +55,8 @@ class BaseCalculator(ABC):
 class AdditionCalculator(BaseCalculator):
     def calculate(self, num_one: float, num_two: float) -> float:
         return num_one + num_two
+
+
+class SubtractionCalculator(BaseCalculator):
+    def calculate(self, num_one: float, num_two: float) -> float:
+        return num_one - num_two
