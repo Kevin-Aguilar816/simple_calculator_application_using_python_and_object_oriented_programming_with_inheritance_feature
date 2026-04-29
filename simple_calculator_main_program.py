@@ -39,7 +39,7 @@ class SimpleCalculator:
                 f"{Fore.MAGENTA}Enter your choice: {Style.RESET_ALL}").strip().upper()
 
             if choice == 'Q':
-                return , None, None
+                return, None, None
             elif choice == 'H':
                 CalculatorActions.show_all_history()
                 input(
@@ -55,3 +55,19 @@ class SimpleCalculator:
                     return operation, calculator
                 print(
                     f"{Fore.RED}Invalid choice. Please try again.{Style.RESET_ALL}")
+
+    def get_numbers(self) -> tuple:
+        while True:
+            try:
+                num_one_str = input(
+                    f"{Fore.BLUE}Enter the first number: {Style.RESET_ALL}").strip()
+                num_two_str = input(
+                    f"{Fore.BLUE}Enter the second number: {Style.RESET_ALL}").strip()
+
+                num_one = float(num_one_str)
+                num_two = float(num_two_str)
+                return num_one, num_two
+
+            except ValueError:
+                print(
+                    f"{Fore.RED}Invalid input. Please enter valid numbers.{Style.RESET_ALL}")
