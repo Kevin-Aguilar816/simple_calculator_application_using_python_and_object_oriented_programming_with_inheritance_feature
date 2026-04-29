@@ -1,6 +1,9 @@
 import os
+from random import choice
 import time
 import sys
+
+from colorama import Fore, Style
 from calculator_functionalities import (
     CalculatorActions, DivisionByZeroError, InvalidInputError)
 
@@ -28,3 +31,27 @@ class SimpleCalculator:
         print(f" {Fore.YELLOW}H{Style.RESET_ALL}. View History")
         print(f" {Fore.RED}Q{Style.RESET_ALL}. Quit")
         print("=" * 50)
+
+    def get_user_input(self) -> tuple:
+        while True:
+            self.display_menu()
+            choice = input(
+                f"{Fore.MAGENTA}Enter your choice: {Style.RESET_ALL}").strip().upper()
+
+            if choice == 'Q':
+                return , None, None
+            elif choice == 'H':
+                CalculatorActions.show_all_history()
+                input(
+                    f"\n{Fore.YELLOW}Press Enter to continue... {Style.RESET_ALL}")
+                self.clear_screen()
+                self.display_banner()
+                continue
+            else:
+                operation, calculator = CalculatorActions.get_operation_info(
+                    choice)
+                if operation:
+                    print(f"{Fore.GREEN}You selected: {operation}{Style.RESET_ALL}")
+                    return operation, calculator
+                print(
+                    f"{Fore.RED}Invalid choice. Please try again.{Style.RESET_ALL}")
