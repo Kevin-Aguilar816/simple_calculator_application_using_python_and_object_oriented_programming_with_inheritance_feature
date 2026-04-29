@@ -13,3 +13,7 @@ class CalculatorError(Exception):
 
 class InvalidOperationError(CalculatorError):
     pass
+
+
+class DivisionByZeroError(CalculatorError):
+    pass
