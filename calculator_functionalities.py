@@ -30,3 +30,12 @@ class BaseCalculator(ABC):
     @abstractmethod
     def calculate(self, num_one: float, num_two: float) -> float:
         pass
+
+    def add_to_history(self, operation: str, num_one: float, num_two: float, result: float):
+        self.history.append({
+            "operation": operation,
+            "num_one": num_one,
+            "num_two": num_two,
+            "result": result,
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+        })
