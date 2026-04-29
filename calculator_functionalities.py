@@ -21,3 +21,12 @@ class DivisionByZeroError(CalculatorError):
 
 class InvalidInputError(CalculatorError):
     pass
+
+
+class BaseCalculator(ABC):
+    def __init__(self):
+        self.history = []
+
+    @abstractmethod
+    def calculate(self, num_one: float, num_two: float) -> float:
+        pass
