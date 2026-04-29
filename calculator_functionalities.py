@@ -46,10 +46,12 @@ class BaseCalculator(ABC):
             return
         print(
             f"{Fore.CYAN}Calculation History ({len(self.history)} entries):{Style.RESET_ALL}")
+        print("=" + 70)
         for i, calc in enumerate(self.history[-5:], 1):
             print(f"{Fore.GREEN}{i}. {calc['timestamp']}{Style.RESET_ALL}")
             print(
                 f"{calc[num_one]} {calc['operation']} {calc['num_two']} = {calc['result']}")
+        print("=" + 70)
 
 
 class AdditionCalculator(BaseCalculator):
