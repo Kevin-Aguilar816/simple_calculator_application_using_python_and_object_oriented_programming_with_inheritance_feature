@@ -130,7 +130,6 @@ class SimpleCalculator:
                 input(f"\n{Fore.YELLOW}Press Enter to continue... {Style.RESET_ALL}")
 
             if not self.ask_to_continue():
-                print(f"{Fore.GREEN}Thank you for using Kevculator! Goodbye!{Style.RESET_ALL}")
                 break
         
         self.show_goodbye()
