@@ -65,3 +65,44 @@ class SubtractionCalculator(BaseCalculator):
 class MultiplicationCalculator(BaseCalculator):
     def calculate(self, num_one: float, num_two: float) -> float:
         return num_one * num_two
+
+
+class DivisionCalculator(BaseCalculator):
+    def calculate(self, num_one: float, num_two: float) -> float:
+        if num_two == 0:
+            raise DivisionByZeroError("Cannot divide by zero.")
+        return num_one / num_two
+
+
+class CalculatorActions:
+    operations = {
+        "a": ("Addition", AdditionCalculator()),
+        "s": ("Subtraction", SubtractionCalculator()),
+        "m": ("Multiplication", MultiplicationCalculator()),
+        "d": ("Division", DivisionCalculator())
+    }
+
+    @staticmethod
+    def get_operation_info(choice: str) -> tuple:
+        if choice in CalculatorActions.operations:
+            name, calculator = CalculatorActions.operations[choice]
+            return name.split()[0], calculator
+        return None, None
+
+    @staticmethod
+    def show_all_history():
+        print(f"\n{Fore.MAGENTA}All Calculator History:{Style.RESET_ALL}")
+        has_history = False
+
+        for calc_name, (_, calculator) in CalculatorActions.operations.items():
+            if calculator.history:
+                print(
+                    f"\n{Fore.BLUE}{calc_name.upper()} History:{Style.RESET_ALL}")
+                for calc in calculator.history[-3]:
+                    print(
+                        f"{calc[num_one]} {calc['operation']} {calc['num_two']} = {calc['result']}")
+                    has_history = True
+
+        if not has_history:
+            print(
+                f"{Fore.YELLOW}No calculations have been performed yet. {Style.RESET_ALL}")
