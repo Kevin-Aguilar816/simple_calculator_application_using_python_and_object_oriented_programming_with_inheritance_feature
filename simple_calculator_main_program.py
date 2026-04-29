@@ -145,5 +145,16 @@ class SimpleCalculator:
 {Style.RESET_ALL}
         """)
         time.sleep(2)
-        
+
+    def main():
+        try:
+            application = SimpleCalculator()
+            application.run()
+        except KeyboardInterrupt:
+            print(f"\n{Fore.RED}Exiting the calculator. Goodbye!{Style.RESET_ALL}")
+        except Exception as error:
+            print(f"{Fore.RED}An unexpected error occurred: {str(error)}{Style.RESET_ALL}")
+
+    if __name__ == "__main__":
+        main()
         
