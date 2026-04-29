@@ -9,3 +9,7 @@ colorama.init(autoreset=True)
 
 class CalculatorError(Exception):
     pass
+
+
+class InvalidOperationError(CalculatorError):
+    pass
