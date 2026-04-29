@@ -78,10 +78,10 @@ class DivisionCalculator(BaseCalculator):
 
 class CalculatorActions:
     operations = {
-        "a": ("Addition", AdditionCalculator()),
-        "s": ("Subtraction", SubtractionCalculator()),
-        "m": ("Multiplication", MultiplicationCalculator()),
-        "d": ("Division", DivisionCalculator())
+        "a": ("Addition (+)", AdditionCalculator()),
+        "s": ("Subtraction (-)", SubtractionCalculator()),
+        "m": ("Multiplication (*)", MultiplicationCalculator()),
+        "d": ("Division (/)", DivisionCalculator())
     }
 
     @staticmethod
