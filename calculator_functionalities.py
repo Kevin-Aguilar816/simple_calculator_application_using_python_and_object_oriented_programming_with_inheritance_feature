@@ -50,7 +50,7 @@ class BaseCalculator(ABC):
         for i, calc in enumerate(self.history[-5:], 1):
             print(f"{Fore.GREEN}{i}. {calc['timestamp']}{Style.RESET_ALL}")
             print(
-                f"{calc[num_one]} {calc['operation']} {calc['num_two']} = {calc['result']}")
+                f"{calc['num_one']} {calc['operation']} {calc['num_two']} = {calc['result']}")
         print("=" + 70)
 
 
@@ -97,9 +97,10 @@ class CalculatorActions:
         print("\n ALL CALCULATOR HISTORY:")
         has_history = False
 
-        for calc_name, (_, calculator) in CalculatorActions.operations.items():
+        for calc_key, (calc_name, calculator) in CalculatorActions.operations.items():
             if calculator.history:
-                print(f"\n{calc_name.upper()} History:")
+                full_name = calc_name.split("(")[0].strip()
+                print(f"\n{full_name.upper()} History:")
                 for calc in calculator.history[-3:]:
                     print(
                         f"  {calc['num_one']} {calc['operation']} {calc['num_two']} = {calc['result']}")
