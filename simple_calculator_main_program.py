@@ -92,7 +92,7 @@ class SimpleCalculator:
             print(f"{Fore.RED}{error}{Style.RESET_ALL}")
             return False
         except Exception as error:
-            print(f"{Fore.RED}An error occurred: {str(error)}{Style.RESET_ALL}")
+            print(Fore.RED + "An error occurred: " + str(error) + Style.RESET_ALL)
             return False
 
     def ask_to_continue(self) -> bool:
@@ -159,4 +159,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print(f"\n{Fore.RED}Exiting the calculator. Goodbye!{Style.RESET_ALL}")
     except Exception as error:
-        print(f"{Fore.RED}An unexpected error occurred: {str(error)}{Style.RESET_ALL}")
+        print(Fore.RED + "An unexpected error occurred: " + str(error) + Style.RESET_ALL)

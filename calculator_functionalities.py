@@ -88,12 +88,13 @@ class CalculatorActions:
     def get_operation_info(choice: str):
         if choice in CalculatorActions.operations:
             name, calculator = CalculatorActions.operations[choice]
-            return name.split()[0], calculator
+            symbol = name.split("(")[-1].rstrip(")")
+            return symbol, calculator
         return None, None
 
     @staticmethod
     def show_all_history():
-        print("\n📜 ALL CALCULATOR HISTORY:")
+        print("\n ALL CALCULATOR HISTORY:")
         has_history = False
 
         for calc_name, (_, calculator) in CalculatorActions.operations.items():
