@@ -85,7 +85,7 @@ class CalculatorActions:
     }
 
     @staticmethod
-    def get_operation_info(choice: str) -> tuple:
+    def get_operation_info(choice: str):
         if choice in CalculatorActions.operations:
             name, calculator = CalculatorActions.operations[choice]
             return name.split()[0], calculator
@@ -93,18 +93,16 @@ class CalculatorActions:
 
     @staticmethod
     def show_all_history():
-        print(f"\n{Fore.MAGENTA}All Calculator History:{Style.RESET_ALL}")
+        print("\n📜 ALL CALCULATOR HISTORY:")
         has_history = False
 
         for calc_name, (_, calculator) in CalculatorActions.operations.items():
             if calculator.history:
-                print(
-                    f"\n{Fore.BLUE}{calc_name.upper()} History:{Style.RESET_ALL}")
-                for calc in calculator.history[-3]:
+                print(f"\n{calc_name.upper()} History:")
+                for calc in calculator.history[-3:]:
                     print(
-                        f"{calc[num_one]} {calc['operation']} {calc['num_two']} = {calc['result']}")
-                    has_history = True
+                        f"  {calc['num_one']} {calc['operation']} {calc['num_two']} = {calc['result']}")
+                has_history = True
 
         if not has_history:
-            print(
-                f"{Fore.YELLOW}No calculations have been performed yet. {Style.RESET_ALL}")
+            print("No calculations have been performed yet.")
